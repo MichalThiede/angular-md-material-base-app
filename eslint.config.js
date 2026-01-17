@@ -89,20 +89,14 @@ export default [
           leadingUnderscore: "allow",
         },
       ],
+      "@typescript-eslint/explicit-member-accessibility": "error",
       "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+      "@typescript-eslint/consistent-type-assertions": "error",
       "@typescript-eslint/no-empty-function": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/no-inferrable-types": "off",
-      "@typescript-eslint/typedef": [
-        "error",
-        {
-          memberVariableDeclaration: true,
-          propertyDeclaration: true,
-          parameter: true,
-          arrowParameter: true,
-        },
-      ],
     },
   },
 
