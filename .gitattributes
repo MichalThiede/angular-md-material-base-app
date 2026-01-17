@@ -1,0 +1,7 @@
+# Wszystko tekstowe → LF
+* text=auto eol=lf
+
+# Wyjątki (binaria)
+*.png binary
+*.jpg binary
+*.zip binary
