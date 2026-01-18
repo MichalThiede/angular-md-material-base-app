@@ -5,12 +5,12 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from './app.routes';
+import { ROUTES } from './app.routes';
 
-export const appConfig: ApplicationConfig = {
+export const APP_CONFIG: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(ROUTES),
   ],
 };
