@@ -1,0 +1,19 @@
+import { inject, Injectable } from '@angular/core';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PublicGuard implements CanActivate {
+  private auth = inject(AuthService);
+  private router = inject(Router);
+
+  public canActivate(): boolean | UrlTree {
+    if (!this.auth.isAuthenticated) {
+      return true;
+    }
+
+    return this.router.createUrlTree(['/auth']);
+  }
+}
