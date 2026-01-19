@@ -1,0 +1,19 @@
+<form [formGroup]="form" style="display: flex; flex-direction: column">
+  <mat-form-field [floatLabel]="'always'" class="example-full-width">
+    <mat-label>Login</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'" class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="'password'" formControlName="password" />
+  </mat-form-field>
+
+  @if (loginFailed) {
+    <small style="margin-bottom: 1rem; color: red"
+      >Invalid email or password</small
+    >
+  }
+
+  <button matButton="filled" (click)="onSubmit()">Login</button>
+</form>
