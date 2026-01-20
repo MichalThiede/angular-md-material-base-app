@@ -39,9 +39,9 @@ export class LoginComponent {
       return;
     }
 
-    const SUCCESS = this.auth.login(email, password);
+    const success = this.auth.login(email, password);
 
-    if (!SUCCESS) {
+    if (!success) {
       this.loginFailed = true;
       return;
     }

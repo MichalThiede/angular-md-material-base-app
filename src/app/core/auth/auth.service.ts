@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser, IAuthState } from './auth.model';
-import { MOCK_USERS } from './auth.mock';
+import { mockUsers } from './auth.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   public login(email: string, password: string): boolean {
-    const user = MOCK_USERS.find(
+    const user = mockUsers.find(
       (user: IUser & { password: string }) =>
         user.email === email && user.password === password,
     );

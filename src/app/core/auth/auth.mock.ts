@@ -1,6 +1,6 @@
 import { IUser } from './auth.model';
 
-export const MOCK_USERS: Array<IUser & { password: string }> = [
+export const mockUsers: Array<IUser & { password: string }> = [
   {
     id: '1',
     email: 'admin',

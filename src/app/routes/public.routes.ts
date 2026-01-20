@@ -3,7 +3,7 @@ import { PublicLayoutComponent } from '../layouts/public-layout/public-layout.co
 import { LoginComponent } from '../features/auth/login/login.component';
 import { PublicGuard } from '../core/guards/public.guard';
 
-export const PUBLIC_ROUTES: Routes = [
+export const publicRoutes: Routes = [
   {
     path: '',
     component: PublicLayoutComponent,

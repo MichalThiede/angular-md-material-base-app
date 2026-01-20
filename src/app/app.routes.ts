@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
-import { AUTH_ROUTES } from './routes/auth.routes';
-import { PUBLIC_ROUTES } from './routes/public.routes';
-import { ERRORS_ROUTES } from './features/errors/errors.routes';
+import { authRoutes } from './routes/auth.routes';
+import { publicRoutes } from './routes/public.routes';
+import { errorRoutes } from './features/errors/errors.routes';
 
-export const ROUTES: Routes = [
+export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: '',
   },
-  ...PUBLIC_ROUTES,
-  ...AUTH_ROUTES,
-  ...ERRORS_ROUTES,
+  ...publicRoutes,
+  ...authRoutes,
+  ...errorRoutes,
   {
     path: '**',
     redirectTo: '404',

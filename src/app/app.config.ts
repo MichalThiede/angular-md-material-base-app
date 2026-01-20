@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { ROUTES } from './app.routes';
+import { routes } from './app.routes';
 import { GlobalErrorHandler } from './core/services/global-error-handler.service';
 import { API_BASE_URL } from './core/http/tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(ROUTES),
+    provideRouter(routes),
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler,

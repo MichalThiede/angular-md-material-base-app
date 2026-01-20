@@ -81,7 +81,7 @@ export default [
         {
           selector: "variable",
           modifiers: ["const"],
-          format: ["UPPER_CASE"],
+          format: ["camelCase"],
         },
         {
           selector: "objectLiteralProperty",

@@ -34,7 +34,7 @@ export class LoggerService {
       return;
     }
 
-    const PAYLOAD = {
+    const payload = {
       level,
       message,
       context,
@@ -43,13 +43,13 @@ export class LoggerService {
 
     switch (level) {
       case LogLevel.ERROR:
-        console.error(PAYLOAD);
+        console.error(payload);
         break;
       case LogLevel.WARN:
-        console.warn(PAYLOAD);
+        console.warn(payload);
         break;
       default:
-        console.log(PAYLOAD);
+        console.log(payload);
     }
   }
 }
