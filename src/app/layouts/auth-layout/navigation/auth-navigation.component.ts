@@ -8,6 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-auth-navigation',
@@ -24,6 +26,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class AuthNavigationComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private auth = inject(AuthService);
+  private router = inject(Router);
 
   public isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -31,4 +35,9 @@ export class AuthNavigationComponent {
       map((result) => result.matches),
       shareReplay(),
     );
+
+  public logout(): void {
+    this.auth.logout();
+    this.router.navigate(['']);
+  }
 }
