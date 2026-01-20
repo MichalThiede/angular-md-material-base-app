@@ -24,18 +24,18 @@ export class AuthService {
   }
 
   public login(email: string, password: string): boolean {
-    const USER = MOCK_USERS.find(
+    const user = MOCK_USERS.find(
       (user: IUser & { password: string }) =>
         user.email === email && user.password === password,
     );
 
-    if (!USER) {
+    if (!user) {
       return false;
     }
 
     this.authState$.next({
       isAuthenticated: true,
-      user: USER,
+      user: user,
     });
 
     return true;
@@ -46,5 +46,9 @@ export class AuthService {
       isAuthenticated: false,
       user: null,
     });
+  }
+
+  public getToken(): string {
+    return `token`;
   }
 }

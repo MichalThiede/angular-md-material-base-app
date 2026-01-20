@@ -9,8 +9,11 @@ import { provideRouter } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { GlobalErrorHandler } from './core/services/global-error-handler.service';
 import { API_BASE_URL } from './core/http/tokens';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
-export const APP_CONFIG: ApplicationConfig = {
+export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -23,5 +26,6 @@ export const APP_CONFIG: ApplicationConfig = {
       provide: API_BASE_URL,
       useValue: 'http://localhost:3000/api',
     },
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
   ],
 };
