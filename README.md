@@ -15,6 +15,41 @@ npm i
 npm run prepare
 ```
 
+<br />
+
+# Conventional Commits
+
+All commits must follow the Conventional Commits standard.
+
+```bash
+<type>(<scope - optional>): <short description>
+```
+
+### Common types:
+
+- feat – new feature
+- fix – bug fix
+- refactor – code change without behavior change
+- chore – tooling / config
+- docs – documentation
+- test – tests
+- style – formatting (no logic change)
+
+### Rules:
+
+- use lowercase for the description
+- use present tense
+
+### Examples:
+
+```bash
+feat(auth): add login validation
+fix(api): handle null response
+chore: update eslint config
+```
+
+<br />
+
 # Angular App
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.2.
