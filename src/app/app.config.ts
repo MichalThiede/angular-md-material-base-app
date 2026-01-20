@@ -12,6 +12,7 @@ import { API_BASE_URL } from './core/http/tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { loadingInterceptor } from './core/interceptors/loader.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,8 @@ export const appConfig: ApplicationConfig = {
       provide: API_BASE_URL,
       useValue: 'http://localhost:3000/api',
     },
-    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, errorInterceptor, loadingInterceptor]),
+    ),
   ],
 };
