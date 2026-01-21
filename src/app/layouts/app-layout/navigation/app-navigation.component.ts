@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
+import { AppNavigationService } from './app-navigation.service';
+import { IMenuItem } from './app-navigation.config';
 
 @Component({
   selector: 'app-app-navigation',
@@ -29,6 +31,12 @@ export class AppNavigationComponent {
   private breakpointObserver = inject(BreakpointObserver);
   private auth = inject(AuthService);
   private router = inject(Router);
+  private nav = inject(AppNavigationService);
+  public menuItems: IMenuItem[] = [];
+
+  public constructor() {
+    this.menuItems = this.nav.getMenu();
+  }
 
   public isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

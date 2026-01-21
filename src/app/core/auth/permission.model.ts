@@ -3,5 +3,6 @@ export type Permission =
   | 'VIEW_PROFILE'
   | 'EDIT_PROFILE'
   | 'VIEW_USERS'
+  | 'VIEW_REPORTS'
   | 'MANAGE_USERS'
   | 'ACCESS_ADMIN_PANEL';
