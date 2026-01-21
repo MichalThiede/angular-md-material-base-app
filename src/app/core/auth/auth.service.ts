@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser, IAuthState } from './auth.model';
 import { mockUsers } from './auth.mock';
+import { ROLE_PERMISSIONS } from './roles.config';
 
 @Injectable({
   providedIn: 'root',
@@ -50,5 +51,25 @@ export class AuthService {
 
   public getToken(): string {
     return `token`;
+  }
+
+  public getPermissions(): Array<string> {
+    if (!this.user) {
+      return [];
+    } else {
+      return ROLE_PERMISSIONS[this.user.role];
+    }
+  }
+
+  public hasPermission(permission: string): boolean {
+    const permissions = this.getPermissions();
+    return permissions.includes(permission);
+  }
+
+  public hasAnyPermission(permissions: Array<string>): boolean {
+    const userPermissions = this.getPermissions();
+    return permissions.some((permission) =>
+      userPermissions.includes(permission),
+    );
   }
 }

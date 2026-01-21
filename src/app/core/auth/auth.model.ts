@@ -1,3 +1,5 @@
+import { Role } from './role.model';
+
 export interface IUser {
   id: string;
   email: string;
@@ -10,4 +12,4 @@ export interface IAuthState {
   user: IUser | null;
 }
 
-export type UserRole = 'admin' | 'user';
+type UserRole = Role;
