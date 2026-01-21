@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
@@ -22,6 +22,7 @@ import { AuthService } from '../../../core/auth/auth.service';
     MatListModule,
     MatIconModule,
     AsyncPipe,
+    RouterLink,
   ],
 })
 export class AppNavigationComponent {
