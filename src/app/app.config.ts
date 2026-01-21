@@ -12,7 +12,7 @@ import { API_BASE_URL } from './core/http/tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
-import { loadingInterceptor } from './core/interceptors/loader.interceptor';
+import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,7 +28,11 @@ export const appConfig: ApplicationConfig = {
       useValue: 'http://localhost:3000/api',
     },
     provideHttpClient(
-      withInterceptors([authInterceptor, errorInterceptor, loadingInterceptor]),
+      // Interceptor order matters:
+      // 1. auth – enrich request
+      // 2. loading – global UX state
+      // 3. error – observe final response
+      withInterceptors([authInterceptor, loadingInterceptor, errorInterceptor]),
     ),
   ],
 };
