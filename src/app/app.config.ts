@@ -7,7 +7,7 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { GlobalErrorHandler } from './core/services/global-error-handler.service';
+import { ErrorHandlerService } from './core/services/error-handler.service';
 import { API_BASE_URL } from './core/http/tokens';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: ErrorHandler,
-      useClass: GlobalErrorHandler,
+      useClass: ErrorHandlerService,
     },
     {
       provide: API_BASE_URL,

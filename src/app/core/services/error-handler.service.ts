@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { LoggerService } from './logger.service';
 
 @Injectable()
-export class GlobalErrorHandler implements ErrorHandler {
+export class ErrorHandlerService implements ErrorHandler {
   private injector = inject(Injector);
 
   public handleError(error: unknown): void {
