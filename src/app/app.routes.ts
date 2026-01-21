@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authRoutes } from './routes/auth.routes';
+import { appRoutes } from './routes/app.routes';
 import { publicRoutes } from './routes/public.routes';
 import { errorRoutes } from './features/errors/errors.routes';
 
@@ -7,10 +7,10 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '',
+    redirectTo: 'auth/login',
   },
   ...publicRoutes,
-  ...authRoutes,
+  ...appRoutes,
   ...errorRoutes,
   {
     path: '**',

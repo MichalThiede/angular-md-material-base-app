@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from '../../../core/auth/auth.service';
+import { AuthService } from '../../../../core/auth/auth.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -48,6 +48,6 @@ export class LoginComponent {
 
     this.loginFailed = false;
 
-    this.router.navigateByUrl('/auth');
+    this.router.navigateByUrl('/app');
   }
 }

@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
-  selector: 'app-auth-navigation',
-  templateUrl: './auth-navigation.component.html',
-  styleUrl: './auth-navigation.component.scss',
+  selector: 'app-app-navigation',
+  templateUrl: './app-navigation.component.html',
+  styleUrl: './app-navigation.component.scss',
   imports: [
     MatToolbarModule,
     MatButtonModule,
@@ -24,7 +24,7 @@ import { AuthService } from '../../../core/auth/auth.service';
     AsyncPipe,
   ],
 })
-export class AuthNavigationComponent {
+export class AppNavigationComponent {
   private breakpointObserver = inject(BreakpointObserver);
   private auth = inject(AuthService);
   private router = inject(Router);
