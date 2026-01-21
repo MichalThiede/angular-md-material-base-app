@@ -13,6 +13,11 @@
         <a mat-list-item [routerLink]="item.route">{{ item.label }}</a>
       }
       <br />
+      <button matButton="outlined" [routerLink]="'/app/admin'">
+        Admin bypass
+      </button>
+      <br />
+      <br />
       <button matButton="filled" (click)="logout()">Log out</button>
     </mat-nav-list>
   </mat-sidenav>
