@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UiFeedbackService } from '../../../../core/ui-feedback/ui-feedback.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
   private auth = inject(AuthService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private uiFeedback = inject(UiFeedbackService);
 
   public loginFailed = false;
 
@@ -43,10 +45,12 @@ export class LoginComponent {
 
     if (!success) {
       this.loginFailed = true;
+      this.uiFeedback.error('Login failed!');
       return;
     }
 
     this.loginFailed = false;
+    this.uiFeedback.success('Successfully logged in!');
 
     this.router.navigateByUrl('/app');
   }
