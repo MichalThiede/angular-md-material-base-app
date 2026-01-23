@@ -44,3 +44,39 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.ui-feedback-success {
+  .mat-mdc-snackbar-surface {
+    background-color: #2e7d32 !important;
+    .mdc-button {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.ui-feedback-error {
+  .mat-mdc-snackbar-surface {
+    background-color: #c62828 !important;
+    .mdc-button {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.ui-feedback-info {
+  .mat-mdc-snackbar-surface {
+    background-color: #1565c0 !important;
+    .mdc-button {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.ui-feedback-warning {
+  .mat-mdc-snackbar-surface {
+    background-color: #ed6c02 !important;
+    .mdc-button {
+      color: #ffffff !important;
+    }
+  }
+}
