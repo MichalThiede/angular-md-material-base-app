@@ -9,6 +9,7 @@ import {
 
 import { Subscription } from 'rxjs';
 import { Permission } from './permission.model';
+import { PermissionsService } from './permissions.service';
 import { AuthService } from './auth.service';
 
 @Directive({
@@ -18,7 +19,8 @@ import { AuthService } from './auth.service';
 export class HasPermissionDirective implements OnDestroy {
   private templateRef = inject(TemplateRef);
   private viewContainer = inject(ViewContainerRef);
-  private authService = inject(AuthService);
+  private permissionsService = inject(PermissionsService);
+  private auth = inject(AuthService);
 
   private permissions: Permission[] = [];
   private sub?: Subscription;
@@ -30,13 +32,13 @@ export class HasPermissionDirective implements OnDestroy {
   }
 
   public constructor() {
-    this.sub = this.authService.state$.subscribe(() => this.updateView());
+    this.sub = this.auth.state$.subscribe(() => this.updateView());
   }
 
   private updateView(): void {
     this.viewContainer.clear();
 
-    if (this.authService.hasAnyPermission(this.permissions)) {
+    if (this.permissionsService.hasAnyPermission(this.permissions)) {
       this.viewContainer.createEmbeddedView(this.templateRef);
     }
   }

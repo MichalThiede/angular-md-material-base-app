@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { PermissionsService } from '../auth/permissions.service';
 
 @Injectable({ providedIn: 'root' })
 export class PermissionGuard implements CanActivate {
-  private auth = inject(AuthService);
+  private permissions = inject(PermissionsService);
   private router = inject(Router);
 
   public canActivate(route: ActivatedRouteSnapshot): boolean {
@@ -14,7 +14,7 @@ export class PermissionGuard implements CanActivate {
       return true; // no permissions - allow access
     }
 
-    const hasAccess = this.auth.hasAnyPermission(requiredPermissions);
+    const hasAccess = this.permissions.hasAnyPermission(requiredPermissions);
 
     if (!hasAccess) {
       this.router.navigate(['/403']); // Forbidden page
