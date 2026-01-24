@@ -23,7 +23,6 @@ export class ThemeService {
   }
 
   public setTheme(mode: ThemeMode): void {
-    this.theme$.next(mode);
     localStorage.setItem(storageKey, mode);
     this.applyTheme(mode);
   }
@@ -41,6 +40,8 @@ export class ThemeService {
       mode === 'dark' ||
       (mode === 'system' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    this.theme$.next(isDark ? 'dark' : 'light');
 
     document.body.classList.toggle('dark-theme', isDark);
   }
