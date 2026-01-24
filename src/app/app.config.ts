@@ -16,6 +16,7 @@ import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { ThemeService } from './core/ui/theme/theme.service';
+import { ConfigService } from './core/config/config.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -38,8 +39,13 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([authInterceptor, loadingInterceptor, errorInterceptor]),
     ),
     provideAppInitializer(() => {
+      const config = inject(ConfigService);
       const theme = inject(ThemeService);
-      return theme.init();
+
+      return config.load().then(() => {
+        const isEnabled = config.value.ui.isEnabled;
+        return isEnabled ? theme.init() : Promise.resolve();
+      });
     }),
   ],
 };

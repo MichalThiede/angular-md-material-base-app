@@ -1,0 +1,16 @@
+{
+  "env": {
+    "name": "dev"
+  },
+  "api": {
+    "baseUrl": "http://localhost:3000/api"
+  },
+  "ui": {
+    "isEnabled": true,
+    "defaultTheme": "system"
+  },
+  "features": {
+    "reports": true,
+    "admin": false
+  }
+}
