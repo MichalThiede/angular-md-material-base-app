@@ -11,6 +11,7 @@
   },
   "features": {
     "reports": true,
-    "admin": false
+    "admin": false,
+    "themeToggle": true
   }
 }
