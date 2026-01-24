@@ -13,7 +13,7 @@ import { AuthService } from '../../../core/auth/auth.service';
 import { AppNavigationService } from './app-navigation.service';
 import { IMenuItem } from './app-navigation.config';
 import { ThemeService } from '../../../core/ui/theme/theme.service';
-import { FeatureFlagsService } from '../../../core/feature-flags/feature-flags.service';
+import { HasFeatureDirective } from '../../../core/feature-flags/has-feature.directive';
 
 @Component({
   selector: 'app-app-navigation',
@@ -27,6 +27,7 @@ import { FeatureFlagsService } from '../../../core/feature-flags/feature-flags.s
     MatIconModule,
     AsyncPipe,
     RouterLink,
+    HasFeatureDirective,
   ],
 })
 export class AppNavigationComponent {
@@ -34,11 +35,9 @@ export class AppNavigationComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
   private nav = inject(AppNavigationService);
-  private featureFlags = inject(FeatureFlagsService);
   public theme = inject(ThemeService);
 
   public menuItems: IMenuItem[] = [];
-  public isThemeToggleEnabled = this.featureFlags.isEnabled('themeToggle');
 
   public constructor() {
     this.menuItems = this.nav.getMenu();
