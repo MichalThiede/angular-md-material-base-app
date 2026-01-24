@@ -12,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/auth/auth.service';
 import { AppNavigationService } from './app-navigation.service';
 import { IMenuItem } from './app-navigation.config';
+import { ThemeService } from '../../../core/ui/theme/theme.service';
 
 @Component({
   selector: 'app-app-navigation',
@@ -32,6 +33,8 @@ export class AppNavigationComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
   private nav = inject(AppNavigationService);
+  public theme = inject(ThemeService);
+
   public menuItems: IMenuItem[] = [];
 
   public constructor() {

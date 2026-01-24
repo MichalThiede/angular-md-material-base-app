@@ -3,6 +3,8 @@ import {
   ErrorHandler,
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection,
+  provideAppInitializer,
+  inject,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -13,6 +15,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
+import { ThemeService } from './core/ui/theme/theme.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,5 +37,9 @@ export const appConfig: ApplicationConfig = {
       // 3. error – observe final response
       withInterceptors([authInterceptor, loadingInterceptor, errorInterceptor]),
     ),
+    provideAppInitializer(() => {
+      const theme = inject(ThemeService);
+      return theme.init();
+    }),
   ],
 };
