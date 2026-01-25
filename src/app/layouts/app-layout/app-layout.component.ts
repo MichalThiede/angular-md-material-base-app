@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppNavigationComponent } from './navigation/app-navigation.component';
-import { PermissionsService } from '../../core/auth/permissions.service';
 
 @Component({
   selector: 'app-app-layout',
@@ -13,11 +12,4 @@ import { PermissionsService } from '../../core/auth/permissions.service';
   `,
   styleUrl: './app-layout.component.scss',
 })
-export class AppLayoutComponent {
-  private permissions = inject(PermissionsService);
-
-  public constructor() {
-    const permissions = this.permissions.getPermissions();
-    console.log('User permissions:', permissions);
-  }
-}
+export class AppLayoutComponent {}

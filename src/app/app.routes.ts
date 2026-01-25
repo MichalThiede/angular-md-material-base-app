@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { appRoutes } from './routes/app.routes';
 import { publicRoutes } from './routes/public.routes';
-import { errorRoutes } from './features/errors/errors.routes';
+import { errorRoutes } from '@features';
 
 export const routes: Routes = [
   {

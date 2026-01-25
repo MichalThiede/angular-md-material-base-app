@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { MatButton } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from '../../../../core/auth/auth.service';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UiFeedbackService } from '../../../../core/ui/ui-feedback/ui-feedback.service';
+
+import { AuthService, UiFeedbackService } from '@core';
 
 @Component({
   selector: 'app-login',

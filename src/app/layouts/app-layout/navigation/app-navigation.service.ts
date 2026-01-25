@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
+import { PermissionsService } from '@core';
 import { IMenuItem, menuItems } from './app-navigation.config';
-import { PermissionsService } from '../../../core/auth/permissions.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppNavigationService {

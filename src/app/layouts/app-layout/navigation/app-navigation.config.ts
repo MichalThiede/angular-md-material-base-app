@@ -1,4 +1,4 @@
-import { Permission } from '../../../core/auth/permission.model';
+import { Permission } from '@core';
 
 export interface IMenuItem {
   label: string;

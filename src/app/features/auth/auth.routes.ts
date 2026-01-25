@@ -3,7 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 export const authRoutes: Routes = [
   {
-    path: 'auth',
+    path: '',
     children: [
       {
         path: '',

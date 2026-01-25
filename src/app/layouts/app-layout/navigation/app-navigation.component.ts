@@ -1,19 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router, RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/auth/auth.service';
-import { AppNavigationService } from './app-navigation.service';
+
+import { AuthService, ThemeService, HasFeatureDirective } from '@core';
+
 import { IMenuItem } from './app-navigation.config';
-import { ThemeService } from '../../../core/ui/theme/theme.service';
-import { HasFeatureDirective } from '../../../core/feature-flags/has-feature.directive';
+import { AppNavigationService } from './app-navigation.service';
 
 @Component({
   selector: 'app-app-navigation',
