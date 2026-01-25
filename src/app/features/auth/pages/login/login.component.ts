@@ -4,7 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UiFeedbackService } from '../../../../core/ui-feedback/ui-feedback.service';
+import { UiFeedbackService } from '../../../../core/ui/ui-feedback/ui-feedback.service';
 
 @Component({
   selector: 'app-login',
