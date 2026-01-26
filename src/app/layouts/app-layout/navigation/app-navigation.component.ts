@@ -17,6 +17,7 @@ import { AuthService, ThemeService, HasFeatureDirective } from '@core';
 
 import { IMenuItem } from './app-navigation.config';
 import { AppNavigationService } from './app-navigation.service';
+import { NavigationMainItemComponent } from '../navigation-main-item/navigation-main-item.component';
 
 @Component({
   selector: 'app-app-navigation',
@@ -31,6 +32,7 @@ import { AppNavigationService } from './app-navigation.service';
     AsyncPipe,
     RouterLink,
     HasFeatureDirective,
+    NavigationMainItemComponent,
   ],
 })
 export class AppNavigationComponent {
