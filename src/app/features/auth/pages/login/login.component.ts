@@ -42,17 +42,18 @@ export class LoginComponent {
       return;
     }
 
-    const success = this.auth.login(email, password);
-
-    if (!success) {
-      this.loginFailed = true;
-      this.uiFeedback.error('Login failed!');
-      return;
-    }
-
-    this.loginFailed = false;
-    this.uiFeedback.success('Successfully logged in!');
-
-    this.router.navigateByUrl('/app');
+    this.auth.login(email, password).subscribe({
+      next: (res: boolean) => {
+        if (!res) {
+          this.loginFailed = true;
+          this.uiFeedback.error('Login failed!');
+          return;
+        } else {
+          this.loginFailed = false;
+          this.uiFeedback.success('Successfully logged in!');
+          this.router.navigateByUrl('/app');
+        }
+      },
+    });
   }
 }

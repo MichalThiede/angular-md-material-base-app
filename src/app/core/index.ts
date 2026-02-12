@@ -1,7 +1,7 @@
 // Auth
 export * from './auth/auth.mock';
 export * from './auth/auth.model';
-export * from './auth/auth.service';
+export * from './auth/services/auth.service';
 export * from './auth/has-permission.directive';
 export * from './auth/permission.model';
 export * from './auth/permissions.config';

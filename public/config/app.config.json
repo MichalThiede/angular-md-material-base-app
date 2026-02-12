@@ -3,7 +3,7 @@
     "name": "dev"
   },
   "api": {
-    "baseUrl": "http://localhost:3000/api"
+    "baseUrl": "http://localhost:3000"
   },
   "ui": {
     "isEnabled": true,

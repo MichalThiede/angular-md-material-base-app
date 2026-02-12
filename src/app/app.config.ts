@@ -19,7 +19,10 @@ import {
   loadingInterceptor,
   ThemeService,
   ConfigService,
+  AuthService,
 } from '@core';
+import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
+import { catchError, of } from 'rxjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,13 +43,19 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([authInterceptor, loadingInterceptor, errorInterceptor]),
     ),
-    provideAppInitializer(() => {
+    provideAppInitializer(async () => {
       const config = inject(ConfigService);
       const theme = inject(ThemeService);
+      const auth = inject(AuthService);
 
-      return config.load().then(() => {
+      await config.load().then(async () => {
         const isEnabled = config.value.ui.isEnabled;
-        return isEnabled ? theme.init() : Promise.resolve();
+        if (isEnabled) {
+          theme.init();
+        }
+
+        await firstValueFrom(auth.refresh().pipe(catchError(() => of(false))));
+        return Promise.resolve();
       });
     }),
   ],

@@ -10,7 +10,7 @@ import {
 import { Subscription } from 'rxjs';
 import { Permission } from './permission.model';
 import { PermissionsService } from './permissions.service';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 @Directive({
   selector: '[appHasPermission]',

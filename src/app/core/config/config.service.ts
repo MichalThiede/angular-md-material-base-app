@@ -5,17 +5,13 @@ import { IAppConfig } from './config.model';
 export class ConfigService {
   private config!: IAppConfig;
 
-  public load(): Promise<void> {
-    return fetch('/config/app.config.json')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Failed to load app config');
-        }
-        return res.json();
-      })
-      .then((data: IAppConfig) => {
-        this.config = data;
-      });
+  public async load(): Promise<void> {
+    const res = await fetch('/config/app.config.json');
+    if (!res.ok) {
+      throw new Error('Failed to load app config');
+    }
+    const data = await res.json();
+    this.config = data;
   }
 
   public get value(): IAppConfig {

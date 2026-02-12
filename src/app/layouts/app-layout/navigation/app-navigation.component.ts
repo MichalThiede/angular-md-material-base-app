@@ -10,7 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { AuthService, ThemeService, HasFeatureDirective } from '@core';
@@ -55,8 +55,8 @@ export class AppNavigationComponent {
       shareReplay(),
     );
 
-  public logout(): void {
-    this.auth.logout();
+  public async logout(): Promise<void> {
+    await firstValueFrom(this.auth.logout());
     this.router.navigate(['']);
   }
 }
