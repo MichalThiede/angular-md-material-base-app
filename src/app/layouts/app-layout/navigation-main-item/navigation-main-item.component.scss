@@ -2,45 +2,40 @@
   display: block;
 }
 
-.nav-main-item {
+.nav-item {
   position: relative;
-  padding: 1rem 0 1rem 2rem;
-  transition: all 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
 
-  &:hover::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--mat-sys-on-surface);
-    opacity: 0.04;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
+.nav-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.25rem;
+  height: 0%;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
 
-  &-active {
-    position: relative;
-    background-color: var(--mat-sys-surface-variant);
-    font-weight: 500;
-    transition: all 0.3s ease-in-out;
-  }
+.nav-item:hover {
+  color: var(--mat-sys-primary);
+  transition: 0.2s ease-in-out;
+}
 
-  &-active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0.25rem;
-    opacity: 1;
-    background-color: var(--mat-sys-primary);
-    transition: all 0.3s ease-in-out;
-  }
+.nav-item-active {
+  position: relative;
+  color: var(--mat-sys-primary);
+}
 
-  &-active:hover {
-    background-color: var(--mat-sys-surface-variant);
-    transition: all 0.3s ease-in-out;
-  }
+.nav-item-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.25rem;
+  height: 100%;
+  opacity: 1;
+  background-color: var(--mat-sys-primary);
+  transition: 0.3s ease-in-out;
 }

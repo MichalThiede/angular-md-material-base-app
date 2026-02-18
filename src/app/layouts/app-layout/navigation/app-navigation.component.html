@@ -1,45 +1,58 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
-    class="sidenav"
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      @for (item of menuItems; track item) {
-        <app-navigation-main-item
-          [navItemName]="item.label"
-          [navItemRoute]="item.route"
-        ></app-navigation-main-item>
-      }
-      <br />
-      <button matButton="outlined" [routerLink]="'/app/admin'">
-        Admin bypass
-      </button>
-      <br />
-      <br />
-      <button matButton="filled" (click)="logout()">Log out</button>
-      <br />
-      <br />
-      <button
-        mat-icon-button
-        *appHasFeature="'themeToggle'"
-        (click)="theme.toggle()"
-      >
-        @let mode = theme.mode$ | async;
-        @if (mode === "dark") {
-          <mat-icon>light_mode</mat-icon>
-        } @else {
-          <mat-icon>dark_mode</mat-icon>
+    <mat-toolbar>
+      <div class="flex items-center justify-center"></div>
+    </mat-toolbar>
+    <div class="flex flex-col flex-grow justify-between pb-9">
+      <div class="flex flex-col gap-4">
+        @for (item of menuItems; track item) {
+          <app-navigation-main-item
+            [label]="item.label"
+            [route]="item.route"
+            [icon]="item.icon"
+          ></app-navigation-main-item>
         }
-      </button>
-    </mat-nav-list>
+      </div>
+
+      <div class="flex items-center justify-center">
+        <button
+          matIconButton
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          (click)="theme.toggle()"
+          *appHasFeature="'themeToggle'"
+        >
+          @let mode = theme.mode$ | async;
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            [fontIcon]="mode === 'dark' ? 'light_mode' : 'dark_mode'"
+          ></mat-icon>
+          <span>{{ mode === "dark" ? "Light" : "Dark" }} mode</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <!-- <mat-toolbar color="primary">
       @if (isHandset$ | async) {
         <button
           type="button"
@@ -51,7 +64,7 @@
         </button>
       }
       <span>angular-md-material-base-app</span>
-    </mat-toolbar>
+    </mat-toolbar> -->
     <!-- Add Content Here -->
     <ng-content> </ng-content>
   </mat-sidenav-content>

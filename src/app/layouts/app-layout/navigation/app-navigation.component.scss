@@ -2,8 +2,10 @@
   height: 100%;
 }
 
-.sidenav {
-  width: 200px;
+.mat-drawer {
+  width: 100px !important;
+  border-right: solid 1px var(--mat-sys-outline-variant) !important;
+  border-radius: 0 !important;
 }
 
 .sidenav .mat-toolbar {
@@ -14,4 +16,11 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.mat-drawer {
+  .mat-drawer-inner-container {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }

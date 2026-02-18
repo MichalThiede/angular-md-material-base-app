@@ -1,7 +1,14 @@
 <div
-  class="nav-main-item"
-  [routerLink]="navItemRoute()"
-  [routerLinkActive]="'nav-main-item-active'"
+  class="nav-item flex flex-col items-center py-3 cursor-pointer"
+  [routerLinkActive]="'nav-item-active'"
+  [routerLink]="route()"
 >
-  {{ navItemName() }}
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    [fontIcon]="icon()"
+  ></mat-icon>
+  <span class="text-sm">
+    {{ label() }}
+  </span>
 </div>

@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -18,11 +18,13 @@ import { AuthService, ThemeService, HasFeatureDirective } from '@core';
 import { IMenuItem } from './app-navigation.config';
 import { AppNavigationService } from './app-navigation.service';
 import { NavigationMainItemComponent } from '../navigation-main-item/navigation-main-item.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-app-navigation',
   templateUrl: './app-navigation.component.html',
   styleUrl: './app-navigation.component.scss',
+  encapsulation: ViewEncapsulation.None,
   imports: [
     MatToolbarModule,
     MatButtonModule,
@@ -30,9 +32,9 @@ import { NavigationMainItemComponent } from '../navigation-main-item/navigation-
     MatListModule,
     MatIconModule,
     AsyncPipe,
-    RouterLink,
     HasFeatureDirective,
     NavigationMainItemComponent,
+    MatMenuModule,
   ],
 })
 export class AppNavigationComponent {
