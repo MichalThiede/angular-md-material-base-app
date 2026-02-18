@@ -2,9 +2,9 @@
   <mat-sidenav
     #drawer
     fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [attr.role]="'navigation'"
+    [mode]="'side'"
+    [opened]="true"
   >
     <mat-toolbar>
       <div class="flex items-center justify-center"></div>
@@ -52,19 +52,6 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          matIconButton
-          (click)="drawer.toggle()"
-        >
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-      }
-      <span>angular-md-material-base-app</span>
-    </mat-toolbar> -->
     <!-- Add Content Here -->
     <ng-content> </ng-content>
   </mat-sidenav-content>
