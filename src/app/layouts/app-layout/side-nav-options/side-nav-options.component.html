@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center">
+  <button matIconButton [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="theme.toggle()" *appHasFeature="'themeToggle'">
+    @let mode = theme.mode$ | async;
+    <mat-icon
+      aria-hidden="false"
+      [fontIcon]="mode === 'dark' ? 'light_mode' : 'dark_mode'"
+    ></mat-icon>
+    <span>{{ mode === "dark" ? "Light" : "Dark" }} mode</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

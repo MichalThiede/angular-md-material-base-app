@@ -6,7 +6,7 @@ import { ISideNavItem, sideNavItems } from './side-nav.config';
 export class SideNavService {
   private permissions = inject(PermissionsService);
 
-  public getMenu(): ISideNavItem[] {
+  public getNavItems(): ISideNavItem[] {
     return sideNavItems.filter(
       (item) =>
         !item.permissions ||

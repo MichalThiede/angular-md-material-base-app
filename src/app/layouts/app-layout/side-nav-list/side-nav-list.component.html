@@ -1,0 +1,9 @@
+<div class="flex flex-col gap-4">
+  @for (item of navItems; track item) {
+    <app-side-nav-item
+      [label]="item.label"
+      [route]="item.route"
+      [icon]="item.icon"
+    ></app-side-nav-item>
+  }
+</div>

@@ -6,48 +6,11 @@
     [mode]="'side'"
     [opened]="true"
   >
-    <div class="flex items-center justify-center h-[9rem]">
-      <img
-        src="/images/logo.jpg"
-        alt="Logo"
-        class="rounded-full w-12 h-12 object-cover"
-      />
-    </div>
+    <app-side-nav-logo></app-side-nav-logo>
+
     <div class="flex flex-col flex-grow justify-between pb-9">
-      <div class="flex flex-col gap-4">
-        @for (item of navItems; track item) {
-          <app-side-nav-item
-            [label]="item.label"
-            [route]="item.route"
-            [icon]="item.icon"
-          ></app-side-nav-item>
-        }
-      </div>
-
-      <div class="flex items-center justify-center">
-        <button matIconButton [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-      </div>
-
-      <mat-menu #menu="matMenu">
-        <button
-          mat-menu-item
-          (click)="theme.toggle()"
-          *appHasFeature="'themeToggle'"
-        >
-          @let mode = theme.mode$ | async;
-          <mat-icon
-            aria-hidden="false"
-            [fontIcon]="mode === 'dark' ? 'light_mode' : 'dark_mode'"
-          ></mat-icon>
-          <span>{{ mode === "dark" ? "Light" : "Dark" }} mode</span>
-        </button>
-        <button mat-menu-item (click)="logout()">
-          <mat-icon>exit_to_app</mat-icon>
-          <span>Logout</span>
-        </button>
-      </mat-menu>
+      <app-side-nav-list></app-side-nav-list>
+      <app-side-nav-options></app-side-nav-options>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
