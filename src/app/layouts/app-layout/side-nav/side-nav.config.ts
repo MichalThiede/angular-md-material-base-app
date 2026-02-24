@@ -1,14 +1,14 @@
 import { Permission } from '@core';
 
-export interface IMenuItem {
+export interface ISideNavItem {
   label: string;
   icon: string;
   route: string;
   permissions?: Permission[];
-  children?: IMenuItem[];
+  children?: ISideNavItem[];
 }
 
-export const menuItems: IMenuItem[] = [
+export const sideNavItems: ISideNavItem[] = [
   {
     label: 'Dashboard',
     icon: 'dashboard',
