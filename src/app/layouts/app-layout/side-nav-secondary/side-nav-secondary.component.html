@@ -4,33 +4,14 @@
     style="width: 240px"
   >
     <div class="flex flex-col">
-      <div class="text-base pb-3 font-medium">Feature Name</div>
-      <div class="nav-item-feature">Feature Child Route</div>
-      <div class="nav-item-feature">Feature Child Route</div>
-      <div class="nav-item-feature nav-item-feature-active">
-        Feature Child Route Very Long
-      </div>
-      <div class="nav-item-feature">Feature Child Route</div>
-      <div
-        class="nav-item-feature"
-        [routerLinkActive]="'nav-item-feature-active'"
-        [routerLink]="['/app/admin']"
-      >
-        Feature Child Route Long
-      </div>
-    </div>
-
-    <!--  -->
-
-    <div class="flex flex-col">
-      <div class="text-base pb-3 font-medium">Feature Name</div>
-      <div class="nav-item-feature">Feature Child Route</div>
-      <div class="nav-item-feature nav-item-feature-active">
-        Feature Child Route
-      </div>
-      <div class="nav-item-feature">Feature Child Route Very Long</div>
-      <div class="nav-item-feature">Feature Child Route</div>
-      <div class="nav-item-feature">Feature Child Route Long</div>
+      @for (section of featureSections; track section) {
+        <div class="text-base pb-3 font-medium">{{ section.name }}</div>
+        @for (item of section.items; track item) {
+          <app-side-nav-secondary-item
+            [item]="item"
+          ></app-side-nav-secondary-item>
+        }
+      }
     </div>
   </div>
 }
