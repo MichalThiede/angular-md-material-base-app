@@ -28,7 +28,11 @@ export const appRoutes: Routes = [
       {
         path: 'users',
         canActivate: [PermissionGuard],
-        data: { permissions: ['MANAGE_USERS'], pageTitle: 'Users' },
+        data: {
+          permissions: ['MANAGE_USERS'],
+          pageTitle: 'Users',
+          secondarySideNav: true,
+        },
         loadChildren: () => import('@features').then((m) => m.usersRoutes),
       },
       {

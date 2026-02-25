@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+@layer utilities {
+  .animate-sidenav {
+    @apply animate-[fadeIn_300ms_ease-out];
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.additional-sidenav-container {
+  border-right: solid 1px var(--mat-sys-outline-variant) !important;
+}
+
+.nav-item-feature {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  border-left: solid 1px var(--mat-sys-outline-variant) !important;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.nav-item-feature::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  width: 0.125rem;
+  height: 0%;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-item-feature:hover {
+  color: var(--mat-sys-primary);
+  transition: 0.2s ease-in-out;
+}
+
+.nav-item-feature-active {
+  position: relative;
+  color: var(--mat-sys-primary);
+  // font-weight: 500;
+}
+
+.nav-item-feature-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 0.2rem;
+  height: 100%;
+  opacity: 1;
+  background-color: var(--mat-sys-primary);
+  transition: 0.3s ease-in-out;
+}
